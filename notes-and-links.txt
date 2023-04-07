@@ -1,0 +1,19 @@
+Modules do not use local variable definitions (i.e. terraform.tfvars)!  I copied the file from the module to my terraform scripts.
+Nope... that doesn't work either.  Looks like the variables are not being defined.  Do I also need the variables file?
+
+Need the variables file AND assign the variables to module variables in the main.module section.  I think that is correct.
+
+select
+node_id,
+address,
+advertise_address,
+sql_address,
+advertise_sql_address,
+locality,
+server_version,
+build_tag,
+started_at,
+is_live,
+ranges,
+leases
+from crdb_internal.gossip_nodes;
