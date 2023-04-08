@@ -28,6 +28,12 @@
       default = ["us-east-1", "us-west-2", "us-east-2"]
     }
 
+    variable "aws_instance_keys" {
+      description = "The instance keys - they should match the regions and the order in the aws_region_list.  These will be used when the ec2 instances are created in each region"
+      type = list
+      default = ["nollen-cockroach-us-east-1-kp01", "nollen-cockroach-us-west-2-kp01", "nollen-cockroach-us-east-2-kp01"]
+    }
+
 # ----------------------------------------
 # TAGS
 # ----------------------------------------
