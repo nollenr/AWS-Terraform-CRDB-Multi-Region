@@ -14,7 +14,9 @@ The Terraform Module creates the following infrastructure:
 * HA Proxy Node per region, configured with the internal IP addresses of the CockroachDB Cluster Nodes (optional)
 * App Server Node per region, configured with a bash function 
 
-![Region Graphic](Resources/mulit-region-diagram.drawio.png)
+### Region and VPC Peering Connections
+![Region Graphi](Resources/mulit-region-diagram.drawio.png)
+### Resources Created in Each Region
 ![Resouce Graphic](Resources/cloud_formation_VPC_output.drawio.png)
   
 In addition the following resources are created to support the Cluster:
