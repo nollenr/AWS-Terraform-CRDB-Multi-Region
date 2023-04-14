@@ -4,13 +4,12 @@ Create a 3 Region CockroachDB Cluster
 ## Resources Created
 The Terraform Module creates the following infrastructure:
 * VPC in each region
+* Peering Connections (3) between the Cluster Region VPCs
 * Internet Gateway in each region
 * 6 Subnets / 3 Private and 3 Public in each VPC.  3 AZs are used per region: 1 public and 1 private subnet is assigned to each AZ.  
 * 1 Public Route Table and 1 Private Route Table per Region with routes for the Peering Connections in the Route Tables
 * 2 Security Groups Per Region:  One for access from an external IP (ports 22, 26257, 8080 and 3389) and one security group for all intra-node communication.  The security groups are applied to all EC2 instances.
-* Since the cluster node EC2 instances must be a multiple of 3 the cluster nodes are evenly distributed between the AZs.
-* Peering Connections (3) between the 3 Cluster Regions
-* EC2 instances for the cockroach cluster in each region spread evenly across 3 AZs, with the database software downloaded and installed.  You can also configure the database to be initialized.
+* EC2 instances for the cockroach cluster in each region spread evenly across 3 AZs, with the database software downloaded and installed.  You can also configure the database to be initialized.  Note that the number of cluster nodes must be a multiple of 3.  The `crdb_nodes` variable is the number of nodes per region.  If you are gonig to initialize the database (which would be the usual case) **`run_init` should only be run in the first region.** 
 * HA Proxy Node per region, configured with the internal IP addresses of the CockroachDB Cluster Nodes (optional)
 * App Server Node per region, configured with a bash function 
 
@@ -33,6 +32,7 @@ In addition the following resources are created to support the Cluster:
 |aws_region_list|A list of 3 regions in which to create the Cockroach Cluster.  Note that the selected regions must have at least 3 AZS (us-west-1 does not qualify)|["us-east-1", "us-west-2", "us-east-2"]|
 |vpc_cidr_list|A list of 3 non-overlaping cidrs -- one cidr range will be allocated to each VPC|["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]|
 |aws_instance_keys|A list of 3 AWS Instance Keys, one for each region.  These keys must already exist in the AWS infrastructure.|["mykey-us-east-1-kp01", "mykey-us-west-2-kp01", "mykey-us-east-2-kp01"]|
+|run_init|"yes" or "no" to initialize the Cockroach Cluster.  **This should only be set to "yes" for the 1st reigon**|"yes"|
 |owner|Used as a tag value on all reasources created as well as the prefix for the name of some of the resources created.|"smith"|
 |project_name|Used as a tag value on all resources created.|"customer XYZ demo"|
 |environment|Used as a tag value on all resources created.|"DEMO"
