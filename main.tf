@@ -233,7 +233,7 @@ resource "aws_route" "vpc1_to_vpc0" {
 }
 
 # Create the security group ingress rule in region-0 for the region-1 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc1" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc1-db" {
   provider = aws.region-0
   security_group_id = module.crdb-region-0.security_group_intra_node_id
   from_port = 26257
@@ -243,8 +243,18 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc1" {
   description = "Allow access to CRDB database port from peer"
 }
 
+resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc1-ssh" {
+  provider = aws.region-0
+  security_group_id = module.crdb-region-0.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[1]
+  description = "Allow access to CRDB ssh port from peer"
+}
+
 # Create the security group ingress rule in region-1 for the region-0 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0-db" {
   provider = aws.region-1
   security_group_id = module.crdb-region-1.security_group_intra_node_id
   from_port = 26257
@@ -252,6 +262,16 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0" {
   ip_protocol = "tcp"
   cidr_ipv4 = var.vpc_cidr_list[0]
   description = "Allow access to CRDB database port from peer"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0-ssh" {
+  provider = aws.region-1
+  security_group_id = module.crdb-region-1.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[0]
+  description = "Allow access to CRDB ssh port from peer"
 }
 
 # Create the 3rd region VPC, subnets, etc and Cockroach Nodes
@@ -329,7 +349,7 @@ resource "aws_route" "vpc2_to_vpc1" {
 }
 
 # Create the security group ingress rule in region-1 for the region-2 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc2" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc2-db" {
   provider = aws.region-1
   security_group_id = module.crdb-region-1.security_group_intra_node_id
   from_port = 26257
@@ -339,12 +359,32 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc2" {
   description = "Allow access to CRDB database port from peer"
 }
 
+resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc2-ssh" {
+  provider = aws.region-1
+  security_group_id = module.crdb-region-1.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[2]
+  description = "Allow access to CRDB database port from peer"
+}
+
 # Create the security group ingress rule in region-2 for the region-1 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc1" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc1-db" {
   provider = aws.region-2
   security_group_id = module.crdb-region-2.security_group_intra_node_id
   from_port = 26257
   to_port = 26257
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[1]
+  description = "Allow access to CRDB database port from peer"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc1-ssh" {
+  provider = aws.region-2
+  security_group_id = module.crdb-region-2.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
   ip_protocol = "tcp"
   cidr_ipv4 = var.vpc_cidr_list[1]
   description = "Allow access to CRDB database port from peer"
@@ -383,7 +423,7 @@ resource "aws_route" "vpc0_to_vpc2" {
 }
 
 # Create the security group ingress rule in region-2 for the region-0 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc0" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc0-db" {
   provider = aws.region-2
   security_group_id = module.crdb-region-2.security_group_intra_node_id
   from_port = 26257
@@ -393,8 +433,18 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc0" {
   description = "Allow access to CRDB database port from peer"
 }
 
+resource "aws_vpc_security_group_ingress_rule" "into-vpc2-from-vpc0-ssh" {
+  provider = aws.region-2
+  security_group_id = module.crdb-region-2.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[0]
+  description = "Allow access to CRDB ssh port from peer"
+}
+
 # Create the security group ingress rule in region-0 for the region-2 cidr
-resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc2" {
+resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc2-db" {
   provider = aws.region-0
   security_group_id = module.crdb-region-0.security_group_intra_node_id
   from_port = 26257
@@ -402,4 +452,14 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc2" {
   ip_protocol = "tcp"
   cidr_ipv4 = var.vpc_cidr_list[2]
   description = "Allow access to CRDB database port from peer"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "into-vpc0-from-vpc2-ssh" {
+  provider = aws.region-0
+  security_group_id = module.crdb-region-0.security_group_intra_node_id
+  from_port = 22
+  to_port = 22
+  ip_protocol = "tcp"
+  cidr_ipv4 = var.vpc_cidr_list[2]
+  description = "Allow access to CRDB ssh port from peer"
 }

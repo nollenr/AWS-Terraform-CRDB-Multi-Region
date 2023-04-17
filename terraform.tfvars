@@ -19,5 +19,12 @@ admin_user_name = "bob"
 # This "key pair" must already exist in the region this is being created!
 crdb_instance_key_name = "nollen-cockroach-us-east-1-kp01"
 
+# us-east-1, us-west-2, us-east-2
 vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
 aws_region_list =  ["us-east-1", "us-west-2", "us-east-2"]
+aws_instance_keys = ["nollen-cockroach-us-east-1-kp01", "nollen-cockroach-us-west-2-kp01", "nollen-cockroach-us-east-2-kp01"]
+
+# us-east-1, ap-southeast-1, eu-central-1
+# vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
+# aws_region_list =  ["us-east-1", "ap-southeast-1", "eu-central-1"]
+# aws_instance_keys = ["nollen-cockroach-us-east-1-kp01", "nollen-cockroach-ap-southeast-1-kp01", "nollen-cockroach-eu-central-1-kp01"]
