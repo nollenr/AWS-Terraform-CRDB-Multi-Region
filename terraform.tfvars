@@ -1,5 +1,4 @@
 my_ip_address = "98.148.51.154"
-aws_region_01 = "us-west-2"
 owner = "nollen"
 project_name = "demo"
 environment = "demo"
