@@ -209,8 +209,10 @@
       default     = "22.2.5"
       validation  {
         condition = contains([
+          "23.1.0-beta.2",
           "23.1.0-alpha.8",
           "23.1.0-alpha.4",
+          "22.2.8",
           "22.2.7",
           "22.2.6",
           "22.2.5",

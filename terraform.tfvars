@@ -1,9 +1,9 @@
 my_ip_address = "98.148.51.154"
 aws_region_01 = "us-west-2"
 owner = "nollen"
-project_name = "my-project"
-environment = "def"
-crdb_version = "22.2.7"
+project_name = "demo"
+environment = "demo"
+crdb_version = "22.2.8"
 crdb_nodes = 3
 crdb_instance_type = "t3a.micro"
 crdb_root_volume_type = "gp3"
