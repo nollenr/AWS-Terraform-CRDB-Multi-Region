@@ -274,6 +274,12 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0-ssh" {
   description = "Allow access to CRDB ssh port from peer"
 }
 
+resource "time_sleep" "wait_30_seconds_01" {
+  depends_on = [module.crdb-region-1]
+
+  create_duration = "30s"
+}
+
 # Create the 3rd region VPC, subnets, etc and Cockroach Nodes
 module "crdb-region-2" {
   # use the https clone url from github, but without the "https://"
@@ -283,7 +289,7 @@ module "crdb-region-2" {
     aws = aws.region-2
   }
 
-  depends_on = [tls_self_signed_cert.crdb_ca_cert, tls_locally_signed_cert.user_cert]
+  depends_on = [tls_self_signed_cert.crdb_ca_cert, tls_locally_signed_cert.user_cert, time_sleep.wait_30_seconds_01]
 
   vpc_cidr               = var.vpc_cidr_list[2] # different for each module
   join_string            = module.crdb-region-0.join_string # from 1st module
