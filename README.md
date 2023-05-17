@@ -58,18 +58,24 @@ export TF_VAR_enterprise_license='my-license key'
 export AWS_ACCESS_KEY_ID="my-access-key-id"
 export AWS_SECRET_ACCESS_KEY="my-secret-access-key"
 ```
-4. Download the git repo to your environment.  This might look like:
+4. Install terraform in AWS Linux 2
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+```
+5. Download the git repo to your environment.  This might look like:
 ```
 git clone https://github.com/nollenr/AWS-Terraform-CRDB-Multi-Region.git
 ```
-5. Modify the file terraform.tfvars to set the [variables](#Terraform-Variables) for your configuration
-6. Issue the following:
+6. Modify the file terraform.tfvars to set the [variables](#Terraform-Variables) for your configuration
+7. Issue the following:
 ```
 terraform init
 terraform plan
 terraform apply --auto-approve
 ```
-7. To eliminate all of the recources created by the terraform script issue the following:
+8. To eliminate all of the recources created by the terraform script issue the following:
 ```
 terraform destroy --auto-approve
 ```
