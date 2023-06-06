@@ -206,10 +206,12 @@
     variable "crdb_version" {
       description = "CockroachDB Version"
       type        = string
-      default     = "22.2.5"
+      default     = "22.2.10"
       validation  {
         condition = contains([
+          "23.1.2",
           "23.1.1",
+          "22.2.10",
           "22.2.9",
           "22.2.8",
           "22.2.7",
