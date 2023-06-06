@@ -113,7 +113,7 @@ resource "tls_locally_signed_cert" "user_cert" {
 
 module "crdb-region-0" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=multi-cloud"
 
   providers = {
     aws = aws.region-0
@@ -159,7 +159,7 @@ module "crdb-region-0" {
 
 module "crdb-region-1" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=multi-cloud"
 
   providers = {
     aws = aws.region-1
