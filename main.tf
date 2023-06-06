@@ -277,7 +277,7 @@ resource "aws_vpc_security_group_ingress_rule" "into-vpc1-from-vpc0-ssh" {
 # Create the 3rd region VPC, subnets, etc and Cockroach Nodes
 module "crdb-region-2" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=multi-cloud"
 
   providers = {
     aws = aws.region-2
