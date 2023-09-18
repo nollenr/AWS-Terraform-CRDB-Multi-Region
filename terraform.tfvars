@@ -2,9 +2,9 @@ my_ip_address = "98.148.51.154"
 owner = "nollen"
 project_name = "demo"
 environment = "demo"
-crdb_version = "22.2.10"
+crdb_version = "23.1.4"
 crdb_nodes = 3
-crdb_instance_type = "t3a.micro"
+crdb_instance_type = "t3a.small"
 crdb_root_volume_type = "gp3"
 crdb_root_volume_size = 8
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
@@ -16,14 +16,14 @@ app_instance_type = "t3a.micro"
 # this admin user is only created if the include_app is set to yes -- this will include the database user and associated certs installed on the app instance.
 admin_user_name = "bob"
 # This "key pair" must already exist in the region this is being created!
-crdb_instance_key_name = "nollen-cockroach-us-east-1-kp01"
+crdb_instance_key_name = "nollen-cockroach-revenue-us-east-1-kp01"
 
 # us-east-1, us-west-2, us-east-2
 vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
 aws_region_list =  ["us-east-1", "us-west-2", "us-east-2"]
-aws_instance_keys = ["nollen-cockroach-us-east-1-kp01", "nollen-cockroach-us-west-2-kp01", "nollen-cockroach-us-east-2-kp01"]
+aws_instance_keys = ["nollen-cockroach-revenue-us-east-1-kp01", "nollen-cockroach-revenue-us-west-2-kp01", "nollen-cockroach-revenue-us-east-2-kp01"]
 
-# us-east-1, ap-southeast-1, eu-central-1
+# us-east-2, ap-southeast-1, eu-central-1
 # vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
-# aws_region_list =  ["us-east-1", "ap-southeast-1", "eu-central-1"]
-# aws_instance_keys = ["nollen-cockroach-us-east-1-kp01", "nollen-cockroach-ap-southeast-1-kp01", "nollen-cockroach-eu-central-1-kp01"]
+# aws_region_list =  ["us-east-2", "ap-southeast-1", "ap-northeast-2"]
+# aws_instance_keys = ["nollen-cockroach-us-east-2-kp01", "nollen-cockroach-ap-southeast-1-kp01", "nollen-cockroach-ap-northeast-2-kp01"]
