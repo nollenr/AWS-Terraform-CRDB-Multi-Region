@@ -1,0 +1,21 @@
+Instances x 3
+Change:
+      source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+Back to:
+      source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+
+
+create Peering connection  
+    from: module.crdb-region-0.vpc_id
+    to: module.crdb-region-1.vpc_id
+
+accept Peering connection   
+    in: aws.region-1
+
+Create routes in region-0 for the cidr in region-1
+Create routes in region-1 for the cidr in region-0
+
+Create the security group ingress rule in region-0 for the region-1 cidr for db
+Create the security group ingress rule in region-0 for the region-1 cidr for ssh
+Create the security group ingress rule in region-1 for the region-0 cidr for db
+Create the security group ingress rule in region-1 for the region-0 cidr for ssh
