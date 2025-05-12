@@ -23,6 +23,8 @@ module "crdb-region-0" {
   crdb_instance_type    = var.crdb_instance_type
   crdb_root_volume_type = var.crdb_root_volume_type
   crdb_root_volume_size = var.crdb_root_volume_size
+  crdb_store_volume_type = var.crdb_store_volume_type
+  crdb_store_volume_size = var.crdb_store_volume_size
   include_ha_proxy      = var.include_ha_proxy
   haproxy_instance_type = var.haproxy_instance_type
   include_app           = var.include_app
@@ -69,6 +71,8 @@ module "crdb-region-1" {
   crdb_instance_type    = var.crdb_instance_type # same for all
   crdb_root_volume_type = var.crdb_root_volume_type # same for all
   crdb_root_volume_size = var.crdb_root_volume_size # same for all
+  crdb_store_volume_type = var.crdb_store_volume_type
+  crdb_store_volume_size = var.crdb_store_volume_size
   include_ha_proxy      = var.include_ha_proxy # same for all
   haproxy_instance_type = var.haproxy_instance_type # same for all
   include_app           = var.include_app # same for all
@@ -111,6 +115,8 @@ module "crdb-region-2" {
   crdb_instance_type    = var.crdb_instance_type # same for all
   crdb_root_volume_type = var.crdb_root_volume_type # same for all
   crdb_root_volume_size = var.crdb_root_volume_size # same for all
+  crdb_store_volume_type = var.crdb_store_volume_type
+  crdb_store_volume_size = var.crdb_store_volume_size
   include_ha_proxy      = var.include_ha_proxy # same for all
   haproxy_instance_type = var.haproxy_instance_type # same for all
   include_app           = var.include_app # same for all
