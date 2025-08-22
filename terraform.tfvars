@@ -6,9 +6,18 @@ crdb_nodes = 3                       # nodes per region
 crdb_instance_type = "t4g.medium"
 crdb_store_volume_type = "gp3"
 crdb_store_volume_size = 8
-crdb_version = "24.2.4"
+# iops and throughput are only used for gp3 volumes
+# ratio of IOPS to volume size cannot be greater than 500
+# ration of throughput to volume size cannot be greater than 25
+# crdb_store_volume_iops = 3000
+# crdb_store_volume_throughput = 125
+crdb_version = "25.2.4"
 crdb_arm_release = "yes"
 crdb_enable_spot_instances = "no"
+crdb_wal_failover = "yes"
+create_db_ui_user = "yes"
+db_ui_user_name = "bob"
+db_ui_user_password = "bob123321bob"
 
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
 include_ha_proxy = "yes"
@@ -17,9 +26,7 @@ haproxy_instance_type = "t3a.micro"
 include_app = "yes"
 app_instance_type = "t3a.micro"
 # this admin user is only created if the include_app is set to yes -- this will include the database user and associated certs installed on the app instance.
-admin_user_name = "bob"
-# This "key pair" must already exist in the region this is being created!
-crdb_instance_key_name = "nollen-cockroach-revenue-us-east-2-kp01"
+admin_user_name = "ron"
 
 # us-east-1, us-west-2, us-east-2
 vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]

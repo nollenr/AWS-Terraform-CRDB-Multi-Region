@@ -162,16 +162,38 @@
       default     = 8
     }
 
-    variable "crdb_instance_key_name" {
-      description = "The key name to use for the crdb instance -- this key must already exist"
-      type        = string
-      nullable    = false
+    variable "crdb_store_volume_iops" {
+      description = "IOPS for gp3"
+      type        = number
+      default     = 3000
     }
+
+    variable "crdb_store_volume_throughput" {
+      description = "Throughput for gp3"
+      type        = number
+      default     = 125
+    }
+
+    # variable "crdb_instance_key_name" {
+    #   description = "The key name to use for the crdb instance -- this key must already exist"
+    #   type        = string
+    #   nullable    = false
+    # }
 
     variable "crdb_version" {
       description = "CockroachDB Version"
       type        = string
       default     = "23.1.10"
+    }
+
+    variable "crdb_wal_failover" {
+      description = "'yes' or 'no' enable WAL failover."
+      type        = string
+      default     = "yes"
+      validation {
+        condition = contains(["yes", "no"], var.crdb_wal_failover)
+        error_message = "Valid value for variable 'crdb_wal_failover' is : 'yes' or 'no'"        
+      }      
     }
 
     variable "run_init" {
@@ -199,6 +221,28 @@
       type        = string
       default     = ""
     }
+
+    variable "create_db_ui_user" {
+      description = "'yes' or 'no' to create a user with a password for accessing the database UI."
+      type        = string
+      default     = "yes"
+      validation {
+        condition = contains(["yes", "no"], var.create_db_ui_user)
+        error_message = "Valid value for variable 'create_db_ui_user' is : 'yes' or 'no'"        
+      }      
+    }
+
+    variable "db_ui_user_name"{
+      description = "An admin with this username will be created if 'create_db_ui_user=yes'"
+      type        = string
+      default     = ""
+    }    
+
+    variable "db_ui_user_password"{
+      description = "An admin with this password will be created if 'create_db_ui_user=yes'"
+      type        = string
+      default     = ""
+    }    
 
 # ----------------------------------------
 # HA Proxy Instance Specifications

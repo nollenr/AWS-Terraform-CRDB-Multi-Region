@@ -25,12 +25,18 @@ module "crdb-region-0" {
   crdb_root_volume_size = var.crdb_root_volume_size
   crdb_store_volume_type = var.crdb_store_volume_type
   crdb_store_volume_size = var.crdb_store_volume_size
+  crdb_store_volume_iops = var.crdb_store_volume_iops
+  crdb_store_volume_throughput = var.crdb_store_volume_throughput
+  crdb_wal_failover     = var.crdb_wal_failover
   include_ha_proxy      = var.include_ha_proxy
   haproxy_instance_type = var.haproxy_instance_type
   include_app           = var.include_app
   app_instance_type     = var.app_instance_type
   admin_user_name       = var.admin_user_name
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
+  create_db_ui_user     = var.create_db_ui_user
+  db_ui_user_name       = var.db_ui_user_name
+  db_ui_user_password   = var.db_ui_user_password
 
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
@@ -73,12 +79,17 @@ module "crdb-region-1" {
   crdb_root_volume_size = var.crdb_root_volume_size # same for all
   crdb_store_volume_type = var.crdb_store_volume_type
   crdb_store_volume_size = var.crdb_store_volume_size
+  crdb_store_volume_iops = var.crdb_store_volume_iops
+  crdb_store_volume_throughput = var.crdb_store_volume_throughput
   include_ha_proxy      = var.include_ha_proxy # same for all
   haproxy_instance_type = var.haproxy_instance_type # same for all
   include_app           = var.include_app # same for all
   app_instance_type     = var.app_instance_type # same for all
   admin_user_name       = var.admin_user_name # same for all
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
+  create_db_ui_user     = var.create_db_ui_user
+  db_ui_user_name       = var.db_ui_user_name
+  db_ui_user_password   = var.db_ui_user_password
 
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
@@ -117,13 +128,18 @@ module "crdb-region-2" {
   crdb_root_volume_size = var.crdb_root_volume_size # same for all
   crdb_store_volume_type = var.crdb_store_volume_type
   crdb_store_volume_size = var.crdb_store_volume_size
+  crdb_store_volume_iops = var.crdb_store_volume_iops
+  crdb_store_volume_throughput = var.crdb_store_volume_throughput
   include_ha_proxy      = var.include_ha_proxy # same for all
   haproxy_instance_type = var.haproxy_instance_type # same for all
   include_app           = var.include_app # same for all
   app_instance_type     = var.app_instance_type # same for all
   admin_user_name       = var.admin_user_name # same for all
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
-
+  create_db_ui_user     = var.create_db_ui_user
+  db_ui_user_name       = var.db_ui_user_name
+  db_ui_user_password   = var.db_ui_user_password
+  
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
   tls_cert        = tls_self_signed_cert.crdb_ca_cert.cert_pem
