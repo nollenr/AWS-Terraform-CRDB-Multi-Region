@@ -15,9 +15,15 @@ crdb_version = "25.2.4"
 crdb_arm_release = "yes"
 crdb_enable_spot_instances = "no"
 crdb_wal_failover = "yes"
-create_db_ui_user = "yes"
+create_db_ui_user = "no"  # <------------ setting this to yes, requires you to set an environment variable prior to running the HCL.  See the NOTE below.
 db_ui_user_name = "bob"
-db_ui_user_password = "bob123321bob"
+# **********************************************************
+# NOTE:  If you want to have a DB UI user created, define
+#        the shell varaible "TF_VAR_db_ui_user_password"
+#        prior to running this script!    The value will
+#        automatically be picked up by this HCL and applied
+# **********************************************************
+# db_ui_user_password = ""
 
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
 include_ha_proxy = "yes"
