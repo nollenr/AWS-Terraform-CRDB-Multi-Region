@@ -24,6 +24,8 @@ db_ui_user_name = "bob"
 #        automatically be picked up by this HCL and applied
 # **********************************************************
 # db_ui_user_password = ""
+cache = 0.35             # Must be a decimal value.
+max_sql_memory = 0.35    # Must be a decimal value.
 
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
 include_ha_proxy = "yes"

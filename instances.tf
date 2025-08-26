@@ -37,6 +37,8 @@ module "crdb-region-0" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
+  cache                 = var.cache
+  max_sql_memory        = var.max_sql_memory
 
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
@@ -90,6 +92,8 @@ module "crdb-region-1" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
+  cache                 = var.cache
+  max_sql_memory        = var.max_sql_memory
 
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
@@ -139,7 +143,9 @@ module "crdb-region-2" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
-  
+  cache                 = var.cache
+  max_sql_memory        = var.max_sql_memory
+    
   tls_private_key = tls_private_key.crdb_ca_keys.private_key_pem
   tls_public_key  = tls_private_key.crdb_ca_keys.public_key_pem
   tls_cert        = tls_self_signed_cert.crdb_ca_cert.cert_pem
