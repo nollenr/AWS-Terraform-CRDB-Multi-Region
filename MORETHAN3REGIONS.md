@@ -2,7 +2,9 @@
 
 **It is up to the user to determine if the instance types, storage, etc. is available in the regions being selected.**
 
-I suggest doing a clean clone of the repo everytime this is executed.  
+I suggest doing a clean clone of the repo everytime this is executed. 
+
+NOTE:  the server running the Multi-Region terraform with more than 3 regions requires a substansial amount of horsepower.  
 
 1.  The scripts to generate the instances and networking require that the scripts can read your `terraform.tfvars` file.   In order to do that, the `python-hcl2` library is required.  
 
@@ -21,13 +23,9 @@ git clone https://github.com/nollenr/AWS-Terraform-CRDB-Multi-Region.git
    - aws_region_list
    - aws_instance_keys 
 
-4.   Initialize terraform 
+4.  Generate instances HCL
 ```
-terraform init
-```
-5.  Generate instances HCL
-```
-python3.11 generate_instances_tf.py
+python generate_instances_tf.py
 ```
 Output should look something like:
 ```
@@ -38,7 +36,7 @@ Renamed 'instances.tf' to 'instances.tf.20250903-191944'
 ✅ Successfully wrote 5 providers and 5 modules to generated_instances.tf
 ```
 
-6.  Generate networking HCL
+5.  Generate networking HCL
 ```
 python3.11 generate_networking.py
 ```
@@ -49,6 +47,10 @@ INPUT:   networking.tf
 OUTPUT:  generated_networking.tf
 Renamed 'networking.tf' to 'networking.tf.20250903-192018'
 ✅ Successfully wrote full-mesh networking configuration for 5 regions to generated_networking.tf
+```
+6.   Initialize terraform 
+```
+terraform init
 ```
 7.  Create environment varialbes if necessary
 - export TF_VAR_cluster_organization
