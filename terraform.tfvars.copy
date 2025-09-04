@@ -1,4 +1,3 @@
-# terraform.tfvars
 my_ip_address = "98.148.51.154"
 owner = "nollen"
 project_name = "demo"
@@ -16,7 +15,7 @@ crdb_version = "25.2.4"
 crdb_arm_release = "yes"
 crdb_enable_spot_instances = "no"
 crdb_wal_failover = "yes"
-create_db_ui_user = "yes"  # <------------ setting this to yes, requires you to set an environment variable prior to running the HCL.  See the NOTE below.
+create_db_ui_user = "no"  # <------------ setting this to yes, requires you to set an environment variable prior to running the HCL.  See the NOTE below.
 db_ui_user_name = "bob"
 # **********************************************************
 # NOTE:  If you want to have a DB UI user created, define
@@ -29,18 +28,18 @@ cache = 0.35             # Must be a decimal value.
 max_sql_memory = 0.35    # Must be a decimal value.
 
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
-include_ha_proxy = "no"
+include_ha_proxy = "yes"
 haproxy_instance_type = "t3a.micro"
 # To include an app node, set 'include_app' to yes and supply an app_instance_type and an admin_user_name.  If you include an app instance, an admin user with cert will automatically be created!
-include_app = "no"
+include_app = "yes"
 app_instance_type = "t3a.micro"
 # this admin user is only created if the include_app is set to yes -- this will include the database user and associated certs installed on the app instance.
 admin_user_name = "ron"
 
 # us-east-1, us-west-2, us-east-2
-vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24", "192.168.6.0/24"]
-aws_region_list =  ["us-east-2", "us-west-2", "us-east-1","eu-central-1"]
-aws_instance_keys = ["nollen-cockroach-revenue-us-east-2-kp01", "nollen-cockroach-revenue-us-west-2-kp01", "nollen-cockroach-revenue-us-east-1-kp01", "nollen-cockroach-eu-central-1-kp01"]
+vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
+aws_region_list =  ["us-east-2", "us-west-2", "us-east-1"]
+aws_instance_keys = ["nollen-cockroach-revenue-us-east-2-kp01", "nollen-cockroach-revenue-us-west-2-kp01", "nollen-cockroach-revenue-us-east-1-kp01"]
 
 # us-east-2, ap-southeast-1, eu-central-1
 # vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
