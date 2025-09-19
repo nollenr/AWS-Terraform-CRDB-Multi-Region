@@ -174,6 +174,16 @@
       default     = 125
     }
 
+    variable "systemd_restart_option"{
+      description = "The systemd restart option for the CRDB service file"
+      validation {
+        condition = contains(["no", "always", "on-success", "on-failure", "on-abnormal", "on-abort", "on-watchdog", ], var.systemd_restart_option)
+        error_message = "Valid value for variable 'systemd_restart_option' is : 'no','always','on-success','on-failure','on-abnormal','on-abort' or'on-watchdog'"        
+      }
+      default = "on-failure"
+    }
+
+
     # variable "crdb_instance_key_name" {
     #   description = "The key name to use for the crdb instance -- this key must already exist"
     #   type        = string
@@ -292,6 +302,16 @@
       description = "App Instance Type"
       type        = string
       default     = "t3a.micro"
+    }
+    
+    variable "install_haproxy_on_app" {
+      description = "'yes' or 'no' to include an HAProxy on the App Node"
+      type        = string
+      default     = "no"
+      validation {
+        condition = contains(["yes", "no"], var.install_haproxy_on_app)
+        error_message = "Valid value for variable 'install_haproxy_on_app' is : 'yes' or 'no'"        
+      }
     }
 
 # ----------------------------------------

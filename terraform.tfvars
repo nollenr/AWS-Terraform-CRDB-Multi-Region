@@ -26,6 +26,7 @@ db_ui_user_name = "bob"
 # db_ui_user_password = ""
 cache = 0.35             # Must be a decimal value.
 max_sql_memory = 0.35    # Must be a decimal value.
+systemd_restart_option = "no"
 
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
 include_ha_proxy = "yes"
@@ -33,6 +34,7 @@ haproxy_instance_type = "t3a.micro"
 # To include an app node, set 'include_app' to yes and supply an app_instance_type and an admin_user_name.  If you include an app instance, an admin user with cert will automatically be created!
 include_app = "yes"
 app_instance_type = "t3a.micro"
+install_haproxy_on_app = "no"
 # this admin user is only created if the include_app is set to yes -- this will include the database user and associated certs installed on the app instance.
 admin_user_name = "ron"
 
