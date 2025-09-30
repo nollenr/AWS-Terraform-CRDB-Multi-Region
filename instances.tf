@@ -34,6 +34,7 @@ module "crdb-region-0" {
   include_app           = var.include_app
   app_instance_type     = var.app_instance_type
   install_haproxy_on_app = var.install_haproxy_on_app
+  include_demo          = var.include_demo
   admin_user_name       = var.admin_user_name
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
   create_db_ui_user     = var.create_db_ui_user
@@ -91,6 +92,7 @@ module "crdb-region-1" {
   include_app           = var.include_app # same for all
   app_instance_type     = var.app_instance_type # same for all
   install_haproxy_on_app = var.install_haproxy_on_app
+  include_demo          = var.include_demo
   admin_user_name       = var.admin_user_name # same for all
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
   create_db_ui_user     = var.create_db_ui_user
@@ -144,6 +146,7 @@ module "crdb-region-2" {
   include_app           = var.include_app # same for all
   app_instance_type     = var.app_instance_type # same for all
   install_haproxy_on_app = var.install_haproxy_on_app
+  include_demo          = var.include_demo
   admin_user_name       = var.admin_user_name # same for all
   aws_region_list       = var.aws_region_list # same for all -- needed for multi-region-demo
   create_db_ui_user     = var.create_db_ui_user
