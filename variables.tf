@@ -315,6 +315,19 @@
     }
 
 # ----------------------------------------
+# Demo
+# ----------------------------------------
+    variable "include_demo" {
+      description = "'yes' or 'no' to include an HAProxy Instance"
+      type        = string
+      default     = "no"
+      validation {
+        condition = contains(["yes", "no"], var.include_demo)
+        error_message = "Valid value for variable 'include_demo' is : 'yes' or 'no'"        
+      }
+    }
+
+# ----------------------------------------
 # TLS Vars -- Leave blank to have then generated
 # ----------------------------------------
     variable "tls_private_key" {
