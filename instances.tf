@@ -1,6 +1,6 @@
 module "crdb-region-0" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
 
   providers = {
     aws = aws.region-0
@@ -59,7 +59,7 @@ module "crdb-region-0" {
 module "crdb-region-1" {
   # use the https clone url from github, but without the "https://"
   # source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=aws-update"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
 
 
   providers = {
@@ -115,7 +115,7 @@ module "crdb-region-1" {
 module "crdb-region-2" {
   # use the https clone url from github, but without the "https://"
   # source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=aws-update"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
 
   providers = {
     aws = aws.region-2
