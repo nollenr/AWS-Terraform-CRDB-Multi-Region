@@ -28,17 +28,17 @@ output "module-crdb-region-2-app_node_public_ip" {
   value = module.crdb-region-2.app_node_public_ip
 }
 
-output "module-crdb-region-0-public_ips_by_az" {
-  description = "CockroachDB Node public IPs assigned to interfaces by AZ in 1st Region."
-  value       = module.crdb-region-0.public_ips_by_az
-}
+# output "module-crdb-region-0-public_ips_by_az" {
+#   description = "CockroachDB Node public IPs assigned to interfaces by AZ in 1st Region."
+#   value       = module.crdb-region-0.public_ips_by_az
+# }
 
-output "module-crdb-region-1-public_ips_by_az" {
-  description = "CockroachDB Node public IPs assigned to interfaces by AZ in 2nd Region."
-  value       = module.crdb-region-1.public_ips_by_az
-}
+# output "module-crdb-region-1-public_ips_by_az" {
+#   description = "CockroachDB Node public IPs assigned to interfaces by AZ in 2nd Region."
+#   value       = module.crdb-region-1.public_ips_by_az
+# }
 
-output "module-crdb-region-2-public_ips_by_az" {
-  description = "CockroachDB Node public IPs assigned to interfaces by AZ in 3rd Region."
-  value       = module.crdb-region-2.public_ips_by_az
-}
+# output "module-crdb-region-2-public_ips_by_az" {
+#   description = "CockroachDB Node public IPs assigned to interfaces by AZ in 3rd Region."
+#   value       = module.crdb-region-2.public_ips_by_az
+# }

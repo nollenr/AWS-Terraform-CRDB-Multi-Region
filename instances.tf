@@ -1,6 +1,6 @@
 module "crdb-region-0" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
 
   providers = {
     aws = aws.region-0
@@ -40,6 +40,7 @@ module "crdb-region-0" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
+  create_database_node_ip_table = var.create_database_node_ip_table
   cache                 = var.cache
   max_sql_memory        = var.max_sql_memory
 
@@ -58,7 +59,7 @@ module "crdb-region-0" {
 module "crdb-region-1" {
   # use the https clone url from github, but without the "https://"
   # source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=aws-update"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
 
 
   providers = {
@@ -98,6 +99,7 @@ module "crdb-region-1" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
+  create_database_node_ip_table = var.create_database_node_ip_table # same for all
   cache                 = var.cache
   max_sql_memory        = var.max_sql_memory
 
@@ -113,7 +115,7 @@ module "crdb-region-1" {
 module "crdb-region-2" {
   # use the https clone url from github, but without the "https://"
   # source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=aws-update"
-  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AWS-Terraform-CRDB-Module.git?ref=node-locality"
 
   providers = {
     aws = aws.region-2
@@ -152,6 +154,7 @@ module "crdb-region-2" {
   create_db_ui_user     = var.create_db_ui_user
   db_ui_user_name       = var.db_ui_user_name
   db_ui_user_password   = var.db_ui_user_password
+  create_database_node_ip_table = var.create_database_node_ip_table # same for all
   cache                 = var.cache
   max_sql_memory        = var.max_sql_memory
     

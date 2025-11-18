@@ -67,6 +67,7 @@ common_settings = """
   create_db_ui_user      = var.create_db_ui_user
   db_ui_user_name        = var.db_ui_user_name
   db_ui_user_password    = var.db_ui_user_password
+  create_database_node_ip_table = var.create_database_node_ip_table
   cache                  = var.cache
   max_sql_memory         = var.max_sql_memory
 
